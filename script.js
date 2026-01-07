@@ -15,31 +15,27 @@ function getComputerChoice() {
     return computerChoice
 }
 
-// Get human choice
-function getHumanChoice() {
-    let humanChoice = prompt('ROCK, PAPER, or Scissors?').toUpperCase()
-    return humanChoice
-}
-
 // Declare score variables
 
+const computerScoreDiv = document.querySelector('.computerscore')
+const playerScoreDiv = document.querySelector('.playerscore')
 
-
-let computerScore = 0
-let humanScore = 0
 
 // Logic for single round
 
-
+    let computerScore = 0
+    let playerScore = 0
 
 function playRound(humanChoice) {
     let computerChoice = getComputerChoice()
+    const scoreBoard = document.querySelector('.scoreboard')
+
 
     if (((humanChoice === 'ROCK') & (computerChoice === 'SCISSORS')) ||
         ((humanChoice === 'SCISSORS') & (computerChoice === 'PAPER')) ||
         ((humanChoice === 'PAPER') & (computerChoice === 'ROCK'))) {
         console.log (`${humanChoice} beats ${computerChoice}. You win this round!`)
-        humanScore++
+        playerScore++
     }
     else if (humanChoice === computerChoice) {
         console.log (`You both chose ${humanChoice}. This round is a Tie!`)
@@ -48,8 +44,16 @@ function playRound(humanChoice) {
         console.log (`${computerChoice} beats ${humanChoice}. You lose this round!`)
         computerScore++
     }
-    console.log(`===SCOREBOARD===`)
-    console.log(`Player: ${humanScore}`)
-    console.log(`Computer: ${computerScore}`)
-    console.assert.og
+
+    if ((computerScore === 5) || (playerScore === 5)) {
+        if (computerScore === 5) {
+            scoreBoard.textContent = `COMPUTER WINS THE GAME`
+        }
+        else {
+            scoreBoard.textContent = 'PLAYER WINS THE GAME'
+        }
+        
+    }
+    computerScoreDiv.textContent = `Computer Score: ${computerScore}`
+    playerScoreDiv.textContent = `Player Score: ${playerScore}`
 }
