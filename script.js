@@ -1,3 +1,12 @@
+const btns = document.querySelectorAll('button')
+
+btns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        playRound(e.target.className.toString().toUpperCase())
+    })
+})
+
+
 // Get computer choice
 function getComputerChoice() {
     const choices = ['ROCK', 'PAPER', 'SCISSORS']
@@ -14,6 +23,8 @@ function getHumanChoice() {
 
 // Declare score variables
 
+
+
 let computerScore = 0
 let humanScore = 0
 
@@ -21,7 +32,8 @@ let humanScore = 0
 
 
 
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice) {
+    let computerChoice = getComputerChoice()
 
     if (((humanChoice === 'ROCK') & (computerChoice === 'SCISSORS')) ||
         ((humanChoice === 'SCISSORS') & (computerChoice === 'PAPER')) ||
@@ -39,28 +51,5 @@ function playRound(humanChoice, computerChoice) {
     console.log(`===SCOREBOARD===`)
     console.log(`Player: ${humanScore}`)
     console.log(`Computer: ${computerScore}`)
+    console.assert.og
 }
-
-// logic to play entire game
-
-function playGame() {
-
-    for (let round = 0; round < 5; round++) {
-        const humanSelection = getHumanChoice()
-        const computerSelection = getComputerChoice()
-        playRound(humanSelection, computerSelection)
-    }
-
-    if (computerScore > humanScore) {
-        console.log('COMPUTER WINS THE GAME')
-    }
-    else if (humanScore > computerScore) {
-        console.log('PLAYER WINS THE GAME!')
-    }
-    else {
-        console.log('THE GAME WAS TIED!')
-    }
-
-}
-
-playGame()
